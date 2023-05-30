@@ -6,13 +6,9 @@ import { FiShoppingCart } from "react-icons/fi";
 import { BsSearch } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 import { CgMenuRightAlt } from "react-icons/cg";
-import { Poppins } from "next/font/google";
+import {poppins} from "../../utils/webfonts";
 import NavbarLinks from "./navbar-links";
 
-const poppins = Poppins({
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-  subsets: ["latin"],
-});
 
 export default function MainNavbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
