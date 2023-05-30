@@ -1,8 +1,9 @@
+import HeroHeader from "./components/ui/hero-header";
 
 export default function Home() {
   return (
     <main>
-      starting app
+      <HeroHeader/>
     </main>
   )
 }
