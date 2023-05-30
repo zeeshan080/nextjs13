@@ -6,7 +6,7 @@ import headImage from "../../assets/images/header.webp"
 
 export default function HeroHeader() {
   return (
-    <section className={`${poppins.className} h-screen flex lg:justify-evenly px-6  lg:px-14 mt-4`}>
+    <section className={`${poppins.className} lg:h-screen flex lg:justify-evenly px-6  lg:px-14 mt-4`}>
         <div className="p-4 lg:w-[40%]">
             <h1  className={`text-[54px] py-6 font-extrabold`}>An Industrial Take on Streetwear</h1>
             <p>Anyone can beat you but no one can beat your outfit as long as you wear Dine outfits.</p>
