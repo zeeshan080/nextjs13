@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db, ProductsTable, newProduct } from "@/lib/drizzle";
+import { db, ProductsTable } from "@/lib/drizzle";
 import { eq } from "drizzle-orm";
-import { NextApiRequest } from "next";
+
 
 export async function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams;
@@ -26,7 +26,6 @@ export async function GET(request: NextRequest) {
   });
   try {
     const findProduct = await db.select().from(ProductsTable).where(eq(ProductsTable.id,findId));
-    console.log(findProduct)
     if (findProduct.length === 0) {
       return NextResponse.json({ message: "product does not exists" });
     }
