@@ -1,22 +1,5 @@
-import Sizes from "@/app/components/ui/Sizes";
-import AddToCart from "@/app/components/ui/add-to-cart";
-import { Poppins } from "next/font/google";
-import Image from "next/image";
-
-export const poppins = Poppins({
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-  subsets: ["latin"],
-});
-
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  sizes: object;
-  createdAt: Date;
-  category: number;
-};
+import SingleProduct from "@/app/components/ui/single-product";
+import { Product } from "@/app/types/common";
 
 const getProductById = async (id: number) => {
   try {
@@ -25,6 +8,7 @@ const getProductById = async (id: number) => {
       headers: {
         "Content-Type": "application/json",
       },
+      next: { revalidate: 3600 },
     });
 
     if (!result.ok) {
@@ -38,33 +22,40 @@ const getProductById = async (id: number) => {
   }
 };
 
-export default async function SingleProduct({
+export default async function SingleProductPage({
   params,
 }: {
   params: { id: string };
 }) {
   const Id: number = Number(params.id);
   const product: Product[] = await getProductById(Id);
+  //console.log(product)
+  // const [selectedSize, setSelectedSize] = useState("");
+  // const [price, setPrice] = useState(product.price);
+  // const [quantity, setQuantity] = useState(1);
+  // let currentQuantity = quantity;
+
+  // const handleIncreaseQuantity = () => {
+  //   if (selectedSize === "") {
+  //     alert("select a size first");
+  //   } else {
+  //     setQuantity(++currentQuantity);
+  //     setPrice(currentQuantity * product.price);
+  //   }
+  // };
+
+  // const handleDecreseQuantity = () => {
+  //   if (currentQuantity > 1) {
+  //     setQuantity(--currentQuantity);
+  //     setPrice(currentQuantity * product.price);
+  //   } else {
+  //     alert("sorry cannot select quantity less then 1");
+  //   }
+  // };
+
   return (
-    <main className={`${poppins.className}`}>
-      <div className="flex flex-col lg:flex-row gap-2">
-        {product.map((item) => {
-          return (
-            <>
-            <div>
-              <Image src={item.image} width={300} height={300} alt={""} />
-            </div>
-            <div>
-                <h1>{item.name}</h1>
-                <h1>{item.category}</h1>
-                {/* <Sizes sizes={item.sizes}/> */}
-                <AddToCart  product={item} />
-            </div>
-            </>
-            
-          );
-        })}
-      </div>
+    <main className="px-14">
+      <SingleProduct product={product[0]} />
     </main>
   );
 }

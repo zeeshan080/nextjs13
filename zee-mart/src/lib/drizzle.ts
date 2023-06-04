@@ -18,8 +18,8 @@ export const CategoriesTable = pgTable(
       id: serial('id').primaryKey(),
       name: text('name').notNull(),
       slug: text('slug').notNull(),
-      discription: text('discription').notNull(),
-      createdAt: timestamp('createdAt').defaultNow().notNull(),
+      description: text('description').notNull(),
+      createdat: timestamp('createdat').defaultNow().notNull(),
     },
     (categories) => {
       return {

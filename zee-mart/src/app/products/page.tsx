@@ -1,8 +1,7 @@
 import { Poppins } from "next/font/google";
 import Product from "../components/ui/product";
-import { revalidatePath } from "next/cache";
 
-export const poppins = Poppins({
+const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });
@@ -34,7 +33,7 @@ const getProducts = async () => {
 
 export default async function Products() {
   const data = await getProducts();
-
+ 
   return (
     <main className={`${poppins.className}`}>
       <div className="grid grid-cols-1 lg:grid-cols-4 p-8">

@@ -6,13 +6,17 @@ import { FiShoppingCart } from "react-icons/fi";
 import { BsSearch } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 import { CgMenuRightAlt } from "react-icons/cg";
-import {poppins} from "../../utils/webfonts";
 import NavbarLinks from "./navbar-links";
+import {useSelector} from "react-redux";
+import { RootState } from '../../store/index';
+
+
 
 
 export default function MainNavbar() {
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const cartQuantity = useSelector((state:RootState) => state.cart.totalQuantity)
 
+  const [toggleMenu, setToggleMenu] = useState(false);
   const toggleMenuHandler = () => {
     setToggleMenu(!toggleMenu);
   };
@@ -28,7 +32,7 @@ export default function MainNavbar() {
         {/* main site logo */}
         <Link
           href={"/"}
-          className={`p-3 logo ${poppins.className} font-bold text-[16px]`}
+          className={`p-3 logo font-family-inherit font-bold text-[16px]`}
         >
           ZeeMart
         </Link>
@@ -42,7 +46,7 @@ export default function MainNavbar() {
             <IoMdClose onClick={toggleMenuHandler} className="h-4 w-4" />
           </div>
           <ul
-            className={`${poppins.className} px-1 py-4 lg:flex lg:py-1 lg:px-2`}
+            className={`font-family-inherit px-1 py-4 lg:flex lg:py-1 lg:px-2`}
           >
            <NavbarLinks href={"/"} title={"Home"}/>
            <NavbarLinks href={"/female"} title={"Female"}/>
@@ -65,14 +69,14 @@ export default function MainNavbar() {
             </form>
           </div>
           {/* cart icon */}
-          <div className="lg:w-[25%] lg:flex lg:pr-5  lg:justify-end">
+          <Link href={'/cart'} className="lg:w-[25%] lg:flex lg:pr-5  lg:justify-end">
             <div className="relative p-1">
               <div className={`absolute top-0 right-0 w-[14px] flex justify-center items-center text-white bg-slate-950 rounded-full `}>
-                <p className={`${poppins.className} text-[10px]`}>0</p>
+                <p className={`font-family-inherit text-[10px]`}>{cartQuantity.reduce((acc, item) => acc + item.value, 0)}</p>
               </div>
               <FiShoppingCart className="h-5 w-5" />
             </div>
-          </div>
+          </Link>
 
           {/*button to toggle navbar on mobile*/}
           <button className="lg:hidden" onClick={toggleMenuHandler}>
