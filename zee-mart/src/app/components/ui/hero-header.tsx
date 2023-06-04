@@ -15,7 +15,7 @@ export default function HeroHeader() {
         <div className="p-4 lg:w-[40%]">
             <h1  className={`text-[54px] py-6 font-extrabold`}>An Industrial Take on Streetwear</h1>
             <p>Anyone can beat you but no one can beat your outfit as long as you wear Dine outfits.</p>
-            <Link href={""} className={`flex items-center justify-center gap-2 w-[80%] lg:w-[40%] m-5 text-gray-50 bg-slate-950 py-3 px-4`}>
+            <Link href={"/products"} className={`flex items-center justify-center gap-2 w-[80%] lg:w-[40%] m-5 text-gray-50 bg-slate-950 py-3 px-4`}>
                 <FiShoppingCart/>
                <span>Start Shopping</span> 
             </Link>

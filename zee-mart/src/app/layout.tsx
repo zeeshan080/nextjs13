@@ -1,10 +1,9 @@
-"use client";
-import { Provider } from "react-redux";
 import Footer from "./components/ui/footer";
 import MainNavbar from "./components/ui/main-navbar";
 import "./globals.css";
-import store from "./store/index";
+
 import { Poppins } from "next/font/google";
+import ReduxProvider from "./utils/redux-provider";
 
 
 
@@ -19,6 +18,7 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 
+
 export default function RootLayout({
   children,
 }: {
@@ -26,13 +26,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Provider store={store}>
+    
+      <ReduxProvider>
         <body className={`${poppins.className}bg-gray-200`}>
           <MainNavbar />
           {children}
           <Footer />
         </body>
-      </Provider>
+      </ReduxProvider>
     </html>
   );
 }
