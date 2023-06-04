@@ -1,9 +1,14 @@
-import { poppins } from "@/app/utils/webfonts";
+import { Poppins } from "next/font/google";
 import Image from "next/image";
 import summerWoman from "../../assets/images/summer.webp";
 import summerMan from "../../assets/images/summer-man.webp";
 import winterMan from "../../assets/images/winner-man.webp";
 
+
+const poppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
 export default function Promotions() {
   return (
     <section className={`${poppins.className} py-7 px-12 lg:h-screen`}>

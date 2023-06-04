@@ -1,8 +1,13 @@
 import Link from "next/link";
 import Image from "next/image"
-import { poppins } from "../../utils/webfonts"
 import { FiShoppingCart } from "react-icons/fi";
 import headImage from "../../assets/images/header.webp"
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
 
 export default function HeroHeader() {
   return (

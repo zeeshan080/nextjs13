@@ -1,10 +1,14 @@
 import Link from "next/link";
 import React from "react";
-import {poppins} from "../../utils/webfonts";
+import { Poppins } from "next/font/google";
 import FooterLinks from "./footer-links";
 import { BsTwitter, BsInstagram } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 
+const poppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
 
 export default function Footer() {
   return (
