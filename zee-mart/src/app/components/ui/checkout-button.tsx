@@ -8,6 +8,7 @@ type Props = {
   styles: string;
   item: Item[];
 };
+const NEXT_PUBLIC_STRIPE_PUBLIC_KEY : string= "pk_test_51NEmcpH0K0u9OIUBUxIXGecaDZSmrHuu4HfJdpZ4JhKhCxp9mlVAKliMLRsVsmkEtLJj2Q7NT8ieYzIMtZgj1uaU00eyXKzG9h"
 
 export default function CheckOutButton({ btnName, styles, item }: Props) {
   const [stripe, setStripe] = useState<Stripe | null>(null);
@@ -15,7 +16,7 @@ export default function CheckOutButton({ btnName, styles, item }: Props) {
   useEffect(() => {
     const initializeStripe = async () => {
       const stripePublicKey: string =
-        process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY ?? "";
+        NEXT_PUBLIC_STRIPE_PUBLIC_KEY ?? "";
       const stripeInstance = await loadStripe(stripePublicKey);
       setStripe(stripeInstance);
     };
