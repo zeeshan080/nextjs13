@@ -36,7 +36,7 @@ export default function CheckOutButton({ btnName, styles, item }: Props) {
 
         const { session } = await response.json();
 
-        console.log(session)
+      
         const { error } = await stripe.redirectToCheckout({
           sessionId: session.id,
         });
