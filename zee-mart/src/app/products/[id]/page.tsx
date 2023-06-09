@@ -1,22 +1,36 @@
 import SingleProduct from "@/app/components/ui/single-product";
-import { Product } from "@/app/types/common";
+import { Product, SingleProductData } from "@/app/types/common";
+import { createClient } from "next-sanity";
 
-const getProductById = async (id: number) => {
+
+const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  apiVersion: "2023-06-01",
+  useCdn: true
+})
+
+const getProductById = async (id:string) => {
   try {
-    const result = await fetch(`http://localhost:3000/api/products/?id=${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      next: { revalidate: 3600 },
-    });
+    // const result = await fetch(`http://localhost:3000/api/products/?id=${id}`, {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   next: { revalidate: 3600 },
+    // });
 
-    if (!result.ok) {
-      throw new Error("faild data fetch");
-    }
+    // if (!result.ok) {
+    //   throw new Error("faild data fetch");
+    // }
+ 
+    const query = `*[_type == "product" && _id == "${id}"]`
 
-    const product = result.json();
-    return product;
+    const result = await client.fetch(query);
+
+    // const product = result.json();
+  //  console.log("result",(result))
+    return result;
   } catch (error) {
     console.log(error);
   }
@@ -27,8 +41,8 @@ export default async function SingleProductPage({
 }: {
   params: { id: string };
 }) {
-  const Id: number = Number(params.id);
-  const product: Product[] = await getProductById(Id);
+  
+  const product: SingleProductData[] = await getProductById(params.id);
   //console.log(product)
   // const [selectedSize, setSelectedSize] = useState("");
   // const [price, setPrice] = useState(product.price);

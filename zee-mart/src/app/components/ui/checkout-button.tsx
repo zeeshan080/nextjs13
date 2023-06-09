@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Item } from "../types/common";
+import { Item } from "../../types/common";
 import { Stripe, loadStripe } from "@stripe/stripe-js";
 
 type Props = {

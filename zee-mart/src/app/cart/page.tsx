@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ImBin } from "react-icons/im";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/index";
-import CheckOutButton from "../components/checkout-button";
+import CheckOutButton from "../components/ui/checkout-button";
 
 type Props = {};
 

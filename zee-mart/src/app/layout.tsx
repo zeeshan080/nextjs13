@@ -5,9 +5,6 @@ import "./globals.css";
 import { Poppins } from "next/font/google";
 import ReduxProvider from "./utils/redux-provider";
 
-
-
-
 export const metadata = {
   title: "ZeeMart",
   description: "a brand new ecommerce website for clothes",
@@ -18,7 +15,6 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 
-
 export default function RootLayout({
   children,
 }: {
@@ -26,7 +22,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-    
       <ReduxProvider>
         <body className={`${poppins.className}bg-gray-200`}>
           <MainNavbar />

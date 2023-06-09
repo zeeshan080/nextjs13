@@ -1,11 +1,24 @@
+// export type SingleProductData = {
+//   id: string;
+//   name: string;
+//   price: number;
+//   image: string;
+//   sizes: object;
+//   createdAt: Date;
+//   category: number;
+// };
+
 export type SingleProductData = {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  sizes: object;
-  createdAt: Date;
-  category: number;
+  _type: string;
+  _id: string;
+  productName: string;
+  productCategory: string;
+  productPrice: number;
+  productImages: object[];
+  sizes: Size[];
+  _createdAt: Date;
+  _updatedAt: Date;
+  _rev: string;
 };
 
 export type Category = {
@@ -23,14 +36,13 @@ export type Product = {
 
 export type Item = {
   id: string;
-  title: string,
-  category: string,
-  image: string,
+  title: string;
+  category: string;
+  image: string;
   price: number;
-  quantity : Quantity,
+  quantity: Quantity;
   totalPrice: number;
 };
-
 
 export type Quantity = {
   size: string;
@@ -38,7 +50,12 @@ export type Quantity = {
 };
 
 export type AllQuantity = {
-  id: string
+  id: string;
   size: string;
   value: number;
 };
+
+export type Size = {
+  size: string,
+  stock: number
+}

@@ -31,7 +31,6 @@
 //     ]
 // }
 
-
 // /schemas/product.js (.ts)
 
 import { defineType, defineField, defineArrayMember } from "sanity";
@@ -47,34 +46,58 @@ const product = defineType({
       title: "Product Name",
     }),
     defineField({
-        name: "productCategory",
-        type: "string",
-        title: "Category Name",
-      }),
-      defineField({
-        name: "productPrice",
-        type: "number",
-        title: "Product Price",
-      }),
-      defineField({
-        name: "productImage",
-        type: "image",
-        title: "Product Image",
-      }),
+      name: "productCategory",
+      type: "string",
+      title: "Category Name",
+    }),
+    defineField({
+      name: "productPrice",
+      type: "number",
+      title: "Product Price",
+    }),
+    defineField({
+      name: "productImages",
+      type: "array",
+      title: "Product Images",
+      of: [
+        defineField({
+          name: "image",
+          type: "image",
+          title: "Product Image",
+        }),
+      ],
+      validation(rule) {
+        return rule.min(1).max(5).error("Please add 1 to 5 product images.");
+      },
+    }),
     defineField({
       name: "sizes",
       type: "array",
       title: "Sizes for Product",
       of: [
         defineArrayMember({
-          type: 'object',
-          name: 'quantity',
+          type: "object",
+          name: "quantity",
           fields: [
-            {type: 'number', name: 'size',title: "Size"},           
-          ]
-        })
-      ]
+            {
+              type: "string",
+              name: "size",
+              title: "Size",
+              initialValue: "",
+              options: {
+                list: [
+                  { title: "Small", value: "S" },
+                  { title: "Medium", value: "M" },
+                  { title: "Large", value: "L" },
+                  { title: "Extra Large", value: "XL" },
+                ],
+              },
+            },
+            { type: "number", name: "stock", title: "Quantity" },
+          ],
+        }),
+      ],
     }),
   ],
-})
-export default product
+});
+export default product;
