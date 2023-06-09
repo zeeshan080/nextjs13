@@ -16,7 +16,7 @@ export default function CheckOutButton({ btnName, styles, item }: Props) {
   useEffect(() => {
     const initializeStripe = async () => {
       const stripePublicKey: string =
-        NEXT_PUBLIC_STRIPE_PUBLIC_KEY ?? "";
+        NEXT_PUBLIC_STRIPE_PUBLIC_KEY;
       const stripeInstance = await loadStripe(stripePublicKey);
       setStripe(stripeInstance);
     };
@@ -36,7 +36,7 @@ export default function CheckOutButton({ btnName, styles, item }: Props) {
 
         const { session } = await response.json();
 
-       
+        console.log(session)
         const { error } = await stripe.redirectToCheckout({
           sessionId: session.id,
         });
