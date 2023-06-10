@@ -47,10 +47,10 @@ export default function Cart({}: Props) {
               {cartItems.items.map((item) => {
                 return (
                   <div
-                    className="flex justify-around"
+                    className="flex flex-col lg:flex-row justify-around"
                     key={item.id + item.quantity.size}
                   >
-                    <div className="flex gap-3">
+                    <div className="flex flex-col lg:flex-row gap-3">
                       <Image
                         src={item.image[0]}
                         alt={""}
@@ -58,11 +58,11 @@ export default function Cart({}: Props) {
                         height={200}
                       />
                       <div>
-                        <h1>{item.title}</h1>
-                        <h2>{item.category}</h2>
+                        <h1 className="font-bold text-[18px]">{item.title}</h1>
+                        <h2 className="font-bold text-[14px] text-slate-400">{item.category}</h2>
                         <div className="flex gap-1 items-center">
                           <div className="flex gap-1">
-                            <h3 className="border-[1px] border-slate-950 px-2 py-1 text-[18px]">
+                            <h3 className="border-[1px] border-slate-950 rounded-[5px] px-2 py-1 text-[18px]">
                               {item.quantity.size}
                             </h3>
                             <h3 className="px-2 py-1 text-[18px]">
@@ -73,7 +73,7 @@ export default function Cart({}: Props) {
                         <h1>Delivery Estimation</h1>
                         <h2>5 Working days</h2>
                         <div className="flex gap-1 items-center">
-                          <h3 className="border-[1px] border-slate-950 px-2 py-1 text-[18px]">
+                          <h3 className="border-[1px] border-slate-950 rounded-[5px] px-2 py-1 text-[18px]">
                             @{item.price}
                           </h3>
                           <h3 className="px-2 py-1 text-[18px]">
@@ -83,7 +83,7 @@ export default function Cart({}: Props) {
                       </div>
                     </div>
 
-                    <div className="flex flex-col justify-around gap-y-4 items-center">
+                    <div className="flex flex-row lg:flex-col  justify-around gap-y-4 items-center">
                       <button
                         onClick={() => {
                           handleRemoveCart(item.id, item.quantity.size);
