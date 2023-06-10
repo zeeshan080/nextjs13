@@ -26,9 +26,9 @@ export default function MainNavbar() {
       <div
         className={`${
           toggleMenu ? "" : "hidden"
-        } absolute top-0 left-0 h-screen w-screen z-10 bg-slate-950 opacity-30`}
+        } absolute top-0 left-0 h-full w-screen z-10 bg-slate-950 opacity-30`}
       ></div>
-      <header className="w-full min-h-[60px] p-3 flex justify-between items-center">
+      <header className="w-full min-h-[60px] p-3 flex justify-between items-center" >
         {/* main site logo */}
         <Link
           href={"/"}
@@ -39,8 +39,8 @@ export default function MainNavbar() {
         {/* responsive navbar */}
         <div
           className={`${
-            toggleMenu ? "right-0" : "right-[-60%]"
-          } z-10 bg-gray-50 lg:bg-transparent absolute lg:relative lg:right-0 top-0 h-screen w-[48%] lg:h-[40px] lg:w-auto ease-in-out duration-300 `}
+            toggleMenu ? "right-0" : "hidden"
+          } z-10 bg-gray-50 lg:bg-transparent absolute lg:relative lg:right-0 top-0 h-full w-[48%] lg:h-[40px] lg:w-auto lg:inline-block ease-in-out duration-300 `}
         >
           <div className="relative top-0 right-0 flex justify-end p-3 lg:hidden">
             <IoMdClose onClick={toggleMenuHandler} className="h-4 w-4" />
@@ -72,7 +72,7 @@ export default function MainNavbar() {
           <Link href={'/cart'} className="lg:w-[25%] lg:flex lg:pr-5  lg:justify-end">
             <div className="relative p-1">
               <div className={`absolute top-0 right-0 w-[14px] flex justify-center items-center text-white bg-slate-950 rounded-full `}>
-                <p className={`font-family-inherit text-[10px]`}>{cartQuantity.reduce((acc, item) => acc + item.value, 0)}</p>
+                <p className={`font-family-inherit text-[10px]`}>{cartQuantity}</p>
               </div>
               <FiShoppingCart className="h-5 w-5" />
             </div>

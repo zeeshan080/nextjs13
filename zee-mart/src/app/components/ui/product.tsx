@@ -36,7 +36,7 @@ export default function Product({ data }: Props) {
         
           <Link href={`products/${items._id}`} key={items._id}>
             <div className="flex flex-col gap-1 p-4">
-              <div className="bg-slate-300 pt-3">
+              <div className="bg-slate-300">
                 <Image
                   src={urlFor(items.productImages[0]).url()}
                   alt={""}

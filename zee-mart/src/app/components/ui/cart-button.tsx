@@ -8,9 +8,10 @@ type Props = {
   btnName: string;
   styles: string;
   item: Item;
+  refreshData: ()=> void
 };
 
-export default function CartButton({ btnName, styles, item }: Props) {
+export default function CartButton({ refreshData, btnName, styles, item }: Props) {
   const dispatch = useDispatch();
 
   const { id, title, category, image, price, quantity, totalPrice } = item;
@@ -19,6 +20,7 @@ export default function CartButton({ btnName, styles, item }: Props) {
       toast("select a size first");
     } else {
       toast(`${quantity.value} items addded to cart successfully`);
+      refreshData()
       dispatch(
         cartAction.addItemToCart({
           id,

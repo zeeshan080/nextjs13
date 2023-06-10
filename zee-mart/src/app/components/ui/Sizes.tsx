@@ -5,12 +5,13 @@ import toast, { Toaster } from "react-hot-toast";
 
 
 type Props = {
+  isSelected : string;
   sizes: Size[];
   getSelectSize: Function;
 };
 
 
-export default function Sizes({ getSelectSize, sizes }: Props) {
+export default function Sizes({isSelected, getSelectSize, sizes }: Props) {
   const [selectedSize, setSelectedSize] = useState("");
 
   const handleSizeSelection = (size: string, value: number) => {
@@ -23,7 +24,7 @@ export default function Sizes({ getSelectSize, sizes }: Props) {
     // You can perform any additional actions with the selected size here
   };
 
-  return (
+  return (  
     <>
       {
         <div className="">
@@ -49,15 +50,14 @@ export default function Sizes({ getSelectSize, sizes }: Props) {
             {sizes.map((size) => {
             
               return (
-              
                 <div
                   key={size.size}
                   className={`${
                     size.stock === 0
                       ? "text-gray-400"
                       : "text-slate-950 hover:bg-gray-400 hover:text-gray-50"
-                  }  text-[18px] p-4  text-center cursor-pointer font-semibold border-[1px] border-slate-950 ${
-                    selectedSize === size.size ? "selected" : ""
+                  }  text-[18px] p-4  text-center cursor-pointer rounded-[9px] font-semibold border-[1px] border-slate-950 ${
+                    selectedSize === size.size && isSelected !== "" ? "selected" : ""
                   }`}
                   onClick={() => handleSizeSelection(size.size, size.stock)}
                 >
@@ -65,7 +65,7 @@ export default function Sizes({ getSelectSize, sizes }: Props) {
                   <span
                     className={`${
                       size.stock === 0 ? "bg-red-700" : "bg-green-700"
-                    } text-[10px] py-1 px-2 text-gray-200`}
+                    } text-[10px] py-1 px-2 text-gray-200 hidden lg:inline-block lg:rounded-[6px]`}
                   >
                     x{size.stock} {size.stock === 0 ? "out stock" : "in stock"}
                   </span>

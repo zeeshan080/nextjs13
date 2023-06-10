@@ -68,7 +68,7 @@ export default async function SingleProductPage({
   // };
 
   return (
-    <main className="px-14">
+    <main className="lg:px-14">
       <SingleProduct product={product[0]} />
     </main>
   );

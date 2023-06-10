@@ -6,21 +6,21 @@ import toast, { Toaster } from 'react-hot-toast';
 
 type Props = {
   size: string;
-  quantity: number;
+  totalStock: number;
+  toBuy: number
   getBuyQuantity: Function
 };
 
-export default function ManageQuantity({ size, quantity,getBuyQuantity }: Props) {
-  const [newQuantity, setnewQuantity] = useState(1);
-  let currentQuantity = newQuantity;
-
+export default function ManageQuantity({ size,toBuy, totalStock,getBuyQuantity }: Props) {
+  const [newQuantity, setnewQuantity] = useState(toBuy);
   const handleIncreaseQuantity = () => {
     if (size === "") {
       toast("select a size first");
     } else {
-      if (currentQuantity < quantity) {
-        setnewQuantity(++currentQuantity);
-        getBuyQuantity(currentQuantity)
+      if (newQuantity < totalStock) {
+        let quantity = newQuantity
+        setnewQuantity(++quantity);
+        getBuyQuantity(newQuantity)
       } else {
         toast("sorry this size do not have more stock");
       }
@@ -31,9 +31,10 @@ export default function ManageQuantity({ size, quantity,getBuyQuantity }: Props)
     if (size === "") {
       toast("select a size first");
     } else {
-      if (currentQuantity > 1) {
-        setnewQuantity(--currentQuantity);
-        getBuyQuantity(currentQuantity)
+      if (newQuantity > 1) {
+        let quantity = newQuantity
+        setnewQuantity(--quantity);
+        getBuyQuantity(newQuantity)
       } else {
         toast("sorry cannot select quantity less then 1");
       }
@@ -66,7 +67,7 @@ export default function ManageQuantity({ size, quantity,getBuyQuantity }: Props)
         btnClick={handleDecreseQuantity}
         childrens={<AiOutlineMinus className="w-4 h-4" />}
       />
-      <span>{currentQuantity}</span>
+      <span>{newQuantity}</span>
       <Button
         styles={
           "flex justify-center items-center w-[35px] h-[35px] text-center rounded-full border-slate-900 border-[1px] font-bold text-[18px]"

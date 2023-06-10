@@ -38,7 +38,7 @@ export type Item = {
   id: string;
   title: string;
   category: string;
-  image: string;
+  image: string[];
   price: number;
   quantity: Quantity;
   totalPrice: number;

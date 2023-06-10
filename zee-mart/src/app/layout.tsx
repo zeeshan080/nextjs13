@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ReduxProvider>
-        <body className={`${poppins.className}bg-gray-200`}>
+        <body className={`${poppins.className}bg-gray-200` }>
           <MainNavbar />
           {children}
           <Footer />
