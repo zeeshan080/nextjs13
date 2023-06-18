@@ -1,7 +1,6 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import Providers from './providers'
+import AddTask from './components/models/add-tasks'
 
 export const metadata = {
   title: 'Todo List',
@@ -15,7 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`bg-gray-200`}>{children}</body>
+      <Providers>
+      <body className={`bg-gray-200`}>
+        <AddTask/>
+        {children}
+        </body>
+      </Providers>
     </html>
   )
 }
