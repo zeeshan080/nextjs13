@@ -14,6 +14,8 @@ import {
 import React from "react";
 import { Settings } from "lucide-react";
 import { LogOut } from "lucide-react";
+import { signOut } from "next-auth/react";
+import { Button } from "@/app/components/ui/button";
 
 type Props = {};
 
@@ -36,7 +38,7 @@ export default function Navbar({}: Props) {
             <DropdownMenuSeparator />
             <DropdownMenuLabel className="flex items-center gap-1">
             <LogOut className="w-4 h-4" />
-              <span>Logout</span>
+              <Button onClick={()=> signOut()}>Logout</Button>
             </DropdownMenuLabel>
           </DropdownMenuContent>
         </DropdownMenu>

@@ -1,4 +1,4 @@
-import { barlow } from "../../assets/font/font";
+import { barlow } from "@/app/assets/font/font";
 import "@/app/globals.css";
 
 export const metadata = {

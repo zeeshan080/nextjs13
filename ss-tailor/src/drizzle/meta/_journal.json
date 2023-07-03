@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1687972102686,
+      "tag": "0000_nebulous_the_call",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1688016224459,
+      "tag": "0001_pretty_the_enforcers",
+      "breakpoints": true
+    }
+  ]
+}
